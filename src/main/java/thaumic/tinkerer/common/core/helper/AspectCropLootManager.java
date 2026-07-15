@@ -11,6 +11,8 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import org.apache.commons.lang3.text.WordUtils;
 
+import gregtech.api.enums.TCAspects;
+import gregtech.api.util.GTModHandler;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.ConfigBlocks;
@@ -84,18 +86,21 @@ public class AspectCropLootManager {
                         ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedGrain.class),
                         1,
                         ItemInfusedGrain.getMetaForAspect(Aspect.AIR)));
+
         addAspectLoot(
                 Aspect.FIRE,
                 new ItemStack(
                         ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedGrain.class),
                         1,
                         ItemInfusedGrain.getMetaForAspect(Aspect.FIRE)));
+
         addAspectLoot(
                 Aspect.EARTH,
                 new ItemStack(
                         ThaumicTinkerer.registry.getFirstItemFromClass(ItemInfusedGrain.class),
                         1,
                         ItemInfusedGrain.getMetaForAspect(Aspect.EARTH)));
+                        
         addAspectLoot(
                 Aspect.WATER,
                 new ItemStack(
@@ -119,6 +124,7 @@ public class AspectCropLootManager {
             ((ItemWispEssence) ConfigItems.itemWispEssence).setAspects(i, new AspectList().add(tag, 2));
             addAspectLoot(Aspect.AURA, i);
         }
+
 
         for (int i = 0; i < 24; i++) {
             addAspectLoot(Aspect.BEAST, new ItemStack(Items.spawn_egg, 1, i));
@@ -234,5 +240,20 @@ public class AspectCropLootManager {
         addAspectLoot(Aspect.TAINT, new ItemStack(ConfigItems.itemResource, 4, 11));
 
         addAspectLoot(Aspect.CRYSTAL, new ItemStack(Items.diamond));
+
+        // GTModHandler.getModItemgetModItem(String aModID, String aItem, long aAmount, int aMeta)
+        // Testing!
+        addAspectLoot(
+                (Aspect) TCAspects.NEBRISUM.getAspect(),
+                GTModHandler.getModItem("SGCraft", "stargateRing", 8, 0));
+        addAspectLoot(
+                (Aspect) TCAspects.NEBRISUM.getAspect(),
+                GTModHandler.getModItem("SGCraft", "stargateRing", 7, 1));
+        addAspectLoot((Aspect) TCAspects.NEBRISUM.getAspect(), GTModHandler.getModItem("SGCraft", "stargateBase"));
+        addAspectLoot(
+                (Aspect) TCAspects.NEBRISUM.getAspect(),
+                GTModHandler.getModItem("SGCraft", "stargateController"));
+        addAspectLoot((Aspect) TCAspects.NEBRISUM.getAspect(), GTModHandler.getModItem("SGCraft", "sgChevronUpgrade"));
+        addAspectLoot((Aspect) TCAspects.NEBRISUM.getAspect(), GTModHandler.getModItem("SGCraft", "sgIrisUpgrade"));
     }
 }
